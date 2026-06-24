@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baguio Dash: Fun Run · Survey</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="form-wrapper">
+
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🏃 Baguio Dash: Fun Run</h1>
+            <span class="header-sub">Survey</span>
+        </div>
+        <div class="subhead">Please share your experience — your feedback helps us improve!</div>
+
+        <form 
+            id="funRunForm" 
+            action="https://script.google.com/macros/s/AKfycbxdzA_eVRjJbQ9m25EU4x91iKVf4lCfPhJVpp3SToOi_S_B6pWrwMD_0u89bkVPZc6g/exec" 
+            method="POST"
+        >
+
+            <!-- 1. BASIC PERSONAL INFORMATION -->
+            <fieldset>
+                <legend>📋 Basic Personal Information</legend>
+
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="E.g. Maria Santos" required />
+
+                <label for="gender" class="mt-1">Gender</label>
+                <div class="radio-group">
+                    <label class="inline-label">
+                        <input type="radio" name="gender" value="Male" /> Male
+                    </label>
+                    <label class="inline-label">
+                        <input type="radio" name="gender" value="Female" /> Female
+                    </label>
+                    <label class="inline-label">
+                        <input type="radio" name="gender" value="Prefer not to say" /> Prefer not to say
+                    </label>
+                </div>
+
+                <label for="age" class="mt-1">Age</label>
+                <input type="number" id="age" name="age" placeholder="Your age" min="1" max="120" required />
+
+                <label for="email" class="mt-1">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </fieldset>
+
+            <!-- 2. MULTIPLE-CHOICE (Radio Buttons) -->
+            <fieldset>
+                <legend>⭐ Experience</legend>
+                <div class="radio-group">
+                    <label class="inline-label">
+                        <input type="radio" name="experience" value="Excellent" /> Excellent
+                    </label>
+                    <label class="inline-label">
+                        <input type="radio" name="experience" value="Good" /> Good
+                    </label>
+                    <label class="inline-label">
+                        <input type="radio" name="experience" value="Average" /> Average
+                    </label>
+                    <label class="inline-label">
+                        <input type="radio" name="experience" value="Poor" /> Poor
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- 3. CHECKBOX SELECTIONS -->
+            <fieldset>
+                <legend>🎯 What aspects did you enjoy? (select all that apply)</legend>
+                <div class="checkbox-group">
+                    <label class="inline-label">
+                        <input type="checkbox" name="enjoyed_scenery" value="Scenery / views" /> Scenery / views
+                    </label>
+                    <label class="inline-label">
+                        <input type="checkbox" name="enjoyed_organization" value="Organization" /> Organization
+                    </label>
+                    <label class="inline-label">
+                        <input type="checkbox" name="enjoyed_route" value="Route / terrain" /> Route / terrain
+                    </label>
+                    <label class="inline-label">
+                        <input type="checkbox" name="enjoyed_hydration" value="Hydration stations" /> Hydration stations
+                    </label>
+                    <label class="inline-label">
+                        <input type="checkbox" name="enjoyed_medal" value="Finisher's medal / kit" /> Finisher's medal / kit
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- 4. DROPDOWN MENU (Satisfaction) -->
+            <fieldset>
+                <legend>🔮 How likely are you to join again next year?</legend>
+                <select id="likelihood" name="likelihood">
+                    <option value="">— Please select —</option>
+                    <option value="Definitely will join">Definitely will join</option>
+                    <option value="Probably will join">Probably will join</option>
+                    <option value="Maybe">Maybe</option>
+                    <option value="Probably not">Probably not</option>
+                    <option value="Definitely not">Definitely not</option>
+                </select>
+            </fieldset>
+
+            <!-- 5. ADDITIONAL FEEDBACK (Textarea) -->
+            <fieldset>
+                <legend>💬 Comments</legend>
+                <textarea id="feedback" name="comments" rows="4" placeholder="Share your thoughts, suggestions, or anything else…"></textarea>
+            </fieldset>
+
+            <!-- 6. FORM BUTTONS -->
+            <div class="button-row">
+                <button type="submit" class="btn btn-submit" id="submitBtn">✨ Submit</button>
+                <button type="reset" class="btn btn-reset" id="resetBtn">↺ Reset</button>
+            </div>
+
+            <!-- SUBMISSION STATUS MESSAGE -->
+            <div id="submissionStatus" class="submission-status" style="display: none;"></div>
+
+            <div class="footer-note">
+                <span>2026 - 2027 Fun Run Edition</span>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        (function() {
+            const form = document.getElementById('funRunForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const statusDiv = document.getElementById('submissionStatus');
+
+            // Function to clear all form fields instantly
+            function clearForm() {
+                // Clear all text inputs and textareas
+                const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="number"], textarea');
+                inputs.forEach(function(input) {
+                    input.value = '';
+                });
+
+                // Clear all radio buttons
+                const radios = form.querySelectorAll('input[type="radio"]');
+                radios.forEach(function(radio) {
+                    radio.checked = false;
+                });
+
+                // Clear all checkboxes
+                const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = false;
+                });
+
+                // Reset dropdowns to first/placeholder option
+                const selects = form.querySelectorAll('select');
+                selects.forEach(function(select) {
+                    select.selectedIndex = 0;
+                });
+            }
+
+            // Reset button handler
+            resetBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                clearForm();
+                statusDiv.style.display = 'none';
+                submitBtn.innerHTML = '✨ Submit';
+                submitBtn.disabled = false;
+            });
+
+            // Form submission handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Show "Sending..." status
+                statusDiv.style.display = 'block';
+                statusDiv.className = 'submission-status sending';
+                statusDiv.innerHTML = '⏳ Sending your response...';
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '⏳ Sending...';
+
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(function(response) {
+                    return response.text();
+                })
+                .then(function(data) {
+                    // Show success message
+                    statusDiv.className = 'submission-status success';
+                    statusDiv.innerHTML = '✅ Thank you! Your survey response has been submitted successfully! 🎉';
+                    submitBtn.innerHTML = '✨ Submitted!';
+                    
+                    // Clear form INSTANTLY after success
+                    clearForm();
+                    
+                    // Reset submit button after 3 seconds (but keep form cleared)
+                    setTimeout(function() {
+                        submitBtn.innerHTML = '✨ Submit';
+                        submitBtn.disabled = false;
+                        statusDiv.style.display = 'none';
+                    }, 3000);
+                })
+                .catch(function(error) {
+                    // Show error message
+                    statusDiv.className = 'submission-status error';
+                    statusDiv.innerHTML = '❌ Something went wrong. Please try again.';
+                    submitBtn.innerHTML = '✨ Submit';
+                    submitBtn.disabled = false;
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

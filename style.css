@@ -1,0 +1,446 @@
+/* ----- RESET & BASE ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f9f0 0%, #d4e8d9 50%, #c8dfd0 100%);
+    font-family: 'Segoe UI', 'Comic Sans MS', 'Chalkboard SE', cursive, sans-serif;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Fun background dots */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(100, 200, 130, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(70, 180, 120, 0.10) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 215, 100, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ----- MAIN CONTAINER: Cartoonish & vibrant ----- */
+.form-wrapper {
+    max-width: 780px;
+    width: 100%;
+    background: #ffffff;
+    padding: 2.8rem 3rem;
+    border-radius: 3.5rem 3.5rem 3.5rem 1.5rem;
+    box-shadow: 
+        0 12px 0 #8cb89f,
+        0 20px 40px rgba(60, 120, 80, 0.25),
+        inset 0 -4px 0 #b8d5c4;
+    border: 3px solid #7fb095;
+    transition: 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+/* Decorative cartoon element */
+.form-wrapper::after {
+    content: '🏃‍♂️';
+    position: absolute;
+    top: -20px;
+    right: 30px;
+    font-size: 3.2rem;
+    transform: rotate(15deg);
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.10));
+    animation: bounce 3s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: rotate(15deg) translateY(0); }
+    50% { transform: rotate(15deg) translateY(-10px); }
+}
+
+/* ----- HEADER ----- */
+.header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.2rem;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #1d5a30;
+    border-left: 8px solid #6fcf97;
+    padding-left: 1.2rem;
+    letter-spacing: 0.5px;
+    text-shadow: 3px 3px 0 #b8e0c8, 0 4px 8px rgba(60, 140, 80, 0.15);
+    font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+}
+
+.header-sub {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a8b5e;
+    background: #e8f5ec;
+    padding: 0.2rem 1rem;
+    border-radius: 2rem;
+    border: 2px dashed #6fcf97;
+    transform: rotate(-2deg);
+}
+
+.subhead {
+    color: #2d6b3e;
+    margin-bottom: 1.8rem;
+    font-size: 1.05rem;
+    padding-left: 1.6rem;
+    border-bottom: 3px dotted #9bc9ae;
+    padding-bottom: 0.8rem;
+    font-weight: 500;
+    background: linear-gradient(to right, #f0faf3, transparent);
+    border-radius: 0 0 2rem 0;
+    padding: 0.8rem 1.6rem;
+}
+
+/* ----- FIELDSET (cartoon style) ----- */
+fieldset {
+    border: 3px solid #8cb89f;
+    border-radius: 2.5rem 2.5rem 2.5rem 1.2rem;
+    padding: 1.6rem 2rem 2rem 2rem;
+    margin-bottom: 1.8rem;
+    background: #fafffc;
+    box-shadow: 
+        inset 0 2px 12px rgba(160, 200, 170, 0.15),
+        0 6px 0 #b8d5c4;
+    position: relative;
+    transition: 0.2s;
+}
+
+fieldset:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        inset 0 2px 12px rgba(160, 200, 170, 0.15),
+        0 8px 0 #b8d5c4;
+}
+
+legend {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1d5a30;
+    padding: 0.2rem 1.8rem;
+    background: #e8f5ec;
+    border-radius: 3rem;
+    border: 3px solid #6fcf97;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 0 #9bc9ae;
+    transform: rotate(-1deg);
+    font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+}
+
+/* ----- LABELS & INPUTS (cartoon) ----- */
+label {
+    font-weight: 600;
+    color: #1d5a30;
+    display: inline-block;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1.4rem;
+    font-size: 1rem;
+    background: #f7fff9;
+    border: 3px solid #b8d5c4;
+    border-radius: 2.5rem;
+    outline: none;
+    transition: 0.2s;
+    color: #1a3d24;
+    font-family: inherit;
+    margin-top: 0.2rem;
+    box-shadow: inset 0 2px 8px rgba(80, 150, 100, 0.06);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #4caf7a;
+    box-shadow: 0 0 0 6px rgba(76, 175, 122, 0.15), inset 0 2px 8px rgba(80, 150, 100, 0.06);
+    background: #ffffff;
+    transform: scale(1.01);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #b0d0b8;
+    font-weight: 400;
+}
+
+/* inline labels for radio / checkbox (cartoon) */
+.inline-label {
+    font-weight: 500;
+    color: #1d5a30;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    padding: 0.3rem 0.8rem;
+    background: #f4faf6;
+    border-radius: 2rem;
+    border: 2px solid transparent;
+    transition: 0.15s;
+    font-size: 0.98rem;
+}
+
+.inline-label:hover {
+    background: #e8f5ec;
+    border-color: #8cb89f;
+    transform: scale(1.02);
+}
+
+.inline-label input[type="radio"],
+.inline-label input[type="checkbox"] {
+    width: 1.3rem;
+    height: 1.3rem;
+    accent-color: #4caf7a;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin: 0;
+    border: 2px solid #8cb89f;
+    border-radius: 50%;
+    transition: 0.15s;
+}
+
+.inline-label input[type="checkbox"] {
+    border-radius: 6px;
+}
+
+/* spacing for groups */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    padding-top: 0.3rem;
+}
+
+.radio-group .inline-label,
+.checkbox-group .inline-label {
+    flex: 0 0 auto;
+}
+
+/* dropdown arrow (cartoon) */
+select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%234caf7a" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    background-size: 1.4rem;
+    padding-right: 3.2rem;
+    font-weight: 500;
+}
+
+/* textarea */
+textarea {
+    min-height: 110px;
+    resize: vertical;
+    border-radius: 2rem;
+    padding: 1rem 1.4rem;
+}
+
+/* ----- BUTTONS: cartoon & vibrant ----- */
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.btn {
+    padding: 0.8rem 3rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 3.5rem;
+    cursor: pointer;
+    transition: 0.15s;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Comic Sans MS', 'Segoe UI', cursive;
+    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.10);
+    position: relative;
+    top: 0;
+}
+
+.btn-submit {
+    background: linear-gradient(145deg, #4caf7a, #3d9b6a);
+    border: 3px solid #2d7a52;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 0 #2d7a52, 0 8px 20px rgba(60, 160, 90, 0.30);
+}
+
+.btn-submit:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #2d7a52, 0 12px 28px rgba(60, 160, 90, 0.35);
+    background: linear-gradient(145deg, #56c084, #43a871);
+}
+
+.btn-submit:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #2d7a52, 0 8px 20px rgba(60, 160, 90, 0.25);
+}
+
+.btn-reset {
+    background: linear-gradient(145deg, #e8f0ec, #d5e4db);
+    border: 3px solid #b0c8b8;
+    color: #1d5a30;
+    box-shadow: 0 8px 0 #b0c8b8, 0 8px 20px rgba(80, 120, 90, 0.12);
+}
+
+.btn-reset:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #b0c8b8, 0 12px 28px rgba(80, 120, 90, 0.18);
+    background: linear-gradient(145deg, #f0f8f2, #dce8e0);
+}
+
+.btn-reset:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #b0c8b8, 0 8px 20px rgba(80, 120, 90, 0.10);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* ----- FOOTER (cartoon) ----- */
+.footer-note {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #4a8b5e;
+    text-align: right;
+    border-top: 3px dotted #b8d5c4;
+    padding-top: 1rem;
+}
+
+.footer-note span {
+    background: #e8f5ec;
+    padding: 0.3rem 1.8rem;
+    border-radius: 3rem;
+    border: 3px solid #6fcf97;
+    font-weight: 600;
+    color: #1d5a30;
+    display: inline-block;
+    box-shadow: 0 4px 0 #9bc9ae;
+}
+
+/* small helper */
+.mt-1 {
+    margin-top: 0.4rem;
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 600px) {
+    .form-wrapper {
+        padding: 1.8rem 1.2rem;
+        border-radius: 2.5rem;
+    }
+    .form-wrapper::after {
+        display: none;
+    }
+    h1 {
+        font-size: 1.6rem;
+        padding-left: 0.8rem;
+    }
+    fieldset {
+        padding: 1rem 1.2rem;
+    }
+    .radio-group,
+    .checkbox-group {
+        gap: 0.3rem 0.8rem;
+    }
+    .button-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+    }
+    .inline-label {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    /* ----- SUBMISSION STATUS (Aesthetic) ----- */
+.submission-status {
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeSlideIn 0.5s ease;
+}
+
+.submission-status.sending {
+    background: #f0f7f3;
+    border: 3px solid #8cb89f;
+    color: #2d6b3e;
+}
+
+.submission-status.success {
+    background: #e8f5ec;
+    border: 3px solid #4caf7a;
+    color: #1d5a30;
+    box-shadow: 0 4px 20px rgba(76, 175, 122, 0.20);
+}
+
+.submission-status.error {
+    background: #fde8e8;
+    border: 3px solid #e57373;
+    color: #c62828;
+    box-shadow: 0 4px 20px rgba(229, 115, 115, 0.15);
+}
+
+/* Fade and slide in animation */
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Disabled button style */
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: 0 6px 0 #2d7a52, 0 8px 20px rgba(60, 160, 90, 0.20);
+}
+
+.btn-submit:disabled:hover {
+    transform: none !important;
+    box-shadow: 0 6px 0 #2d7a52, 0 8px 20px rgba(60, 160, 90, 0.20);
+    background: linear-gradient(145deg, #4caf7a, #3d9b6a);
+}
+}
