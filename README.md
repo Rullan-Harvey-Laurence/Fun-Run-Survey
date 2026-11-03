@@ -18,34 +18,19 @@ A responsive, browser-based survey for collecting participant feedback about the
 - Vanilla JavaScript
 - Google Apps Script endpoint for form submissions
 
-## Getting started
+## Live demo
 
-No package manager, build step, or additional dependencies are required.
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Rullan-Harvey-Laurence/Fun-Run-Survey.git
-   cd Fun-Run-Survey
-   ```
-
-2. Open `index.html` in a browser, or serve the project locally with any static web server. For example, with Python:
-
-   ```bash
-   python -m http.server 8000
-   ```
-
-   Then visit <http://localhost:8000>.
+Try the survey: [Baguio Dash: Fun Run Survey](https://rullan-harvey-laurence.github.io/Fun-Run-Survey/)
 
 ## Form submissions
 
-The form sends a `POST` request to the Google Apps Script URL configured in the `action` attribute of the form in `index.html`. Before using the project for a live event, verify that the endpoint is yours, deployed, and configured to accept submissions. Update the endpoint if needed.
+The form sends a `POST` request to the Google Apps Script URL configured in the `action` attribute of the form in `index.html`. Before using the project for a live event, verify that the endpoint is your intended deployment and that it is configured to receive submissions.
 
-The form collects personal information, including a participant's name, age, and email address. Configure the receiving service and access to submitted data appropriately, and provide participants with any privacy information required for your event.
+The form collects personal information, including a participant's name, age, and email address. Configure the receiving service and access to submitted data appropriately, and provide participants with relevant privacy information.
 
 ## Deployment
 
-This is a static site and can be hosted on GitHub Pages or another static web host. On GitHub, open the repository's **Settings → Pages**, select the branch and folder containing `index.html` (typically the root of `main`), and save. Confirm the published URL in the Pages settings. Ensure the configured form endpoint is reachable from the deployed site.
+This is a static site and can be hosted on GitHub Pages or another static web host. On GitHub, open the repository's **Settings → Pages**, select the branch and folder containing `index.html` (typically the root folder), and save.
 
 ## Project structure
 
@@ -62,4 +47,4 @@ Suggestions and improvements are welcome. Open an issue to discuss a change, or 
 
 ## License
 
-No license file is currently included. Unless a license is added, standard copyright applies and reuse, distribution, or modification is not granted by default. Add a `LICENSE` file if you want to specify permissions for others.
+No license file is currently included. Unless a license is added, standard copyright applies and reuse, distribution, or modification is not granted by default. Add a `LICENSE` file if you want to specify terms for reuse.
